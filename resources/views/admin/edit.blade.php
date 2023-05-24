@@ -62,14 +62,14 @@
                         <div class="mb-3">
                             <label for="typeField" class="form-label">Project Type</label>
                             <select
-                                class="form-select @error('thumbField')
+                                class="form-select @error('typeField')
                             is-invalid
-                        @enderror""
-                                aria-label="Default select example">
-                                <option>Nothing</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                        @enderror"
+                                name="typeField" aria-label="Default select example">
+                                @foreach ($types as $type)
+                                    <option @selected(old('type_id', $project->type_id) == "") value="{{ $type->id }}">{{ $type->name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                             @error('typeField')
@@ -79,7 +79,6 @@
                             @enderror
 
                         </div>
-
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>
