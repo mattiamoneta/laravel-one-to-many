@@ -27,7 +27,8 @@ class ProjectRequest extends FormRequest
         return [
             'nameField' => 'required|max:200',
             'descriptionField' => 'required|max:200',
-            'thumbField' => 'required|max:80'
+            'thumbField' => 'required|max:80',
+            'typeField' => 'required|exists:types,id'
         ];
     }
 
@@ -36,7 +37,9 @@ class ProjectRequest extends FormRequest
         return[
             'nameField.required' => 'Il campo Project Name non può essere vuoto',
             'descriptionField.required' => 'Il Description non può essere vuoto',
-            'thumbField.required' => 'Il campo Thumbnail non può essere vuoto'
+            'thumbField.required' => 'Il campo Thumbnail non può essere vuoto',
+            'typeField.required' => 'Il campo Project Type non può essere vuoto',
+            'typeField.exists:types' => 'Il campo Project Type non è corretto'
         ];
     }
 

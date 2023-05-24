@@ -55,6 +55,27 @@
                             @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label for="typeField" class="form-label">Project Type</label>
+                            <select
+                                class="form-select @error('typeField')
+                            is-invalid
+                        @enderror"
+                                name="typeField" aria-label="Default select example">
+                                @foreach ($types as $type)
+                                    <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">{{ $type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error('typeField')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>

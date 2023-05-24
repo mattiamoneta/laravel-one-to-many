@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 #Custom controllers
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware(['auth','verified'])
     })->name('dashboard');
 
     Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+    Route::resource('types', TypeController::class)->only('index');
 });
 
 Route::middleware('auth')

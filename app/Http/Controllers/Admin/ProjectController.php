@@ -10,6 +10,7 @@ use App\Http\Requests\ProjectRequest;
 
 #Models
 use App\Models\Project;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -31,7 +32,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $types = Type::all();
+        return view('admin.create', compact('types'));
     }
 
     /**
@@ -43,13 +45,18 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $data = $request->validated();
+        $data['slug'] = Project::assignSlug($request->nameField);
 
         $newProject = new Project();
         $newProject->name = $data['nameField'];
         $newProject->description = $data['descriptionField'];
         $newProject->thumb = $data['thumbField'];
         $newProject->slug = Project::assignSlug($data['nameField']);
+        $newProject->type_id = $data['typeField'];
+
         $newProject->save();
+
+        // $newProject = Project::create($data);
 
         return redirect()->route('admin.projects.index');
     }

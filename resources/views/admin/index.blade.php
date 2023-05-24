@@ -16,6 +16,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Thumbnail</th>
+                                <th scope="col">Type</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -27,6 +28,7 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td>{{ $project->thumb }}</td>
+                                    <td>{{ $project->type_id }}</td>
                                     <td>
                                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
                                             <a class="btn btn-primary"

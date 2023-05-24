@@ -26,7 +26,7 @@
             <li>
                 <a href="{{ route('admin.projects.index') }}" class="nav-link link-body-emphasis">
                     <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
+                        <use xlink:href="#speedometer2"></use>ç
                     </svg>
                     Projects
                 </a>
