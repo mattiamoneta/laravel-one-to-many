@@ -28,7 +28,16 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td>{{ $project->thumb }}</td>
-                                    <td>{{ $project->type_id }}</td>
+
+                                    <td>
+                                        @if ($project->type_id != null)
+                                            {{ $types[$project->type_id - 1]->name }}
+                                        @else
+                                            -
+                                        @endif
+
+                                    </td>
+
                                     <td>
                                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
                                             <a class="btn btn-primary"
