@@ -13,11 +13,7 @@
                         <span class="text-uppercase fw-bold small">PROJECT TYPE:</span>
 
                         <span class="badge text-bg-secondary">
-                            @if ($project->type_id != null)
-                                {{$types[$project->type_id - 1]->name }}
-                            @else
-                                -
-                            @endif
+                            {{ $project->type ? $project->type->name : '' }}
                         </span>
                     </div>
                     <div class="description mt-4">

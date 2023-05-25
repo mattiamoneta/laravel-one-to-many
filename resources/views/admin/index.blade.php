@@ -30,11 +30,7 @@
                                     <td>{{ $project->thumb }}</td>
 
                                     <td>
-                                        @if ($project->type_id != null)
-                                            {{ $types[$project->type_id - 1]->name }}
-                                        @else
-                                            -
-                                        @endif
+                                        {{ $project->type ? $project->type->name : '-' }}
 
                                     </td>
 
